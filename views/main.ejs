@@ -1,0 +1,36 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-6">
+          <div>
+              <p><strong>User Name</strong>: <%= user.userName %></p>
+              <p><strong>Email</strong>: <%= user.email %></p>
+              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+          </div>
+      </div>
+      <div class="col-6">
+        <ul class="row list-unstyled">
+        <% for(var i=0; i<activities.length; i++) { %>
+          <li class="col-6 justify-content-between mt-5">
+            <!-- maybe make a link for more details or to see coments instead of making the hwole thing a link -->
+            <div>
+              <h2><a href="<%= activities[i].link %>" target="_blank"><%= activities[i].name %></a></h2>
+              <a href="/suggestions/<%= activities[i]._id%>">Comments</a>
+              <p>Likes: <%= activities[i].likes %></p>
+              <p>Desc: <%= activities[i].description %></p>
+              <p>Price: <%= activities[i].price %></p>
+              <p>Season: <%= activities[i].season %></p>
+              <p>Activity: <%= activities[i].typeOfActivity %></p>
+              <p>Suggested by: <%= activities[i].suggestedBy %></p>
+            </div>
+          </li>
+        <% } %>
+        </ul>
+        <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary" href="/profile">Return to Profile</a>
+        </div>  
+      </div>  
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
