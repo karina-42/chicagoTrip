@@ -10,7 +10,7 @@ const { ensureAuth } = require("../middleware/auth");
 router.get("/:id", ensureAuth, suggestionsController.getSuggestion);
 
 //enables user to create post w/ cloudinary for media uploads.
-router.post("/createSuggestion", suggestionsController.createSuggestion);
+router.post("/createSuggestion", upload.single("file"), suggestionsController.createSuggestion);
 
 // router.post("/favoriteRecipe/:id", recipesController.favoriteRecipe);
 

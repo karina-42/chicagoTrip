@@ -7,7 +7,7 @@ module.exports = {
   getMain: async (req, res) => {
     try {
       const activities = await Activity.find({})
-      console.log(activities)
+      //console.log(activities)
 
       res.render('main.ejs', {activities: activities, user: req.user})
     } catch (error) {
@@ -55,15 +55,9 @@ module.exports = {
   },
   createSuggestion: async (req, res) => {
     try {
-      // Upload image to cloudinary
-      // const result = await cloudinary.uploader.upload(req.file.path);
-
-      //media is stored on cloudinary - the above request responds with url to media and the media id that you will need when deleteing content
       const suggestionUser = await User.findById(req.user.id)
       await Activity.create({
         name: req.body.name,
-        // image: result.secure_url,
-        // cloudinaryId: result.public_id,
         link: req.body.link,
         description: req.body.description,
         loves: 0,
