@@ -13,14 +13,14 @@
         </form>
         <form
           class="col-1"
-          action="/suggestion/favoriteRecipe/<%= activity.id %>"
+          action="/suggestion/loveSuggestion/<%= activity.id %>"
           method="POST"
         >
           <button class="btn btn-primary fa fa-star" type="submit"></button>
         </form>
         <form
           class="col-1"
-          action="/suggestion/favoriteRecipe/<%= activity.id %>"
+          action="/suggestion/dislikeSuggestion/<%= activity.id %>"
           method="POST"
         >
           <button class="btn btn-primary" type="submit"></button><i class="fa-solid fa-heart-crack"></i>
@@ -28,7 +28,7 @@
         <h3 class="col-3">Likes: <%= activity.likes %></h3>
         <%if(activity.user == user.id){ %>
         <form
-          action="/suggestion/deleteRecipe/<%= activity.id %>?_method=DELETE"
+          action="/suggestion/deleteActivity/<%= activity.id %>?_method=DELETE"
           method="POST"
           class="col-3"
         >
@@ -45,6 +45,28 @@
       <p>Type: <%= activity.typeOfActivity %></p>
       <p>Suggested by: <%= activity.suggestedBy %></p>
     </div>
+    <div class="mt-5">
+      <h2>Add a comment</h2>
+      <form action="/comment/createComment/<%=activity._id%>" method="POST">
+        <div class="mb-3">
+          <label for="comment" class="form-label">Comment</label>
+          <input type="text" class="form-control" name="comment" id="comment">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+    <ul>
+      <%comments.forEach(comment => { %>
+        <li class="col-6 justify-content-between mt-5">
+          <span><%=comment.createdBy%> says: "<%=comment.comment%>"</span>
+          <%if(comment.createdById == user.id){ %>
+            <form action="/comment/deleteComment/<%activity._id%>/<%comment._id %>?_method=DELETE" method="post">
+              <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
+          <%}%>
+        </li>
+      <% }) %>
+    </ul>
     <div class="col-6 mt-5">
       <a class="btn btn-primary" href="/profile">Return to Profile</a>
       <a class="btn btn-primary" href="/main">Return to Main</a>

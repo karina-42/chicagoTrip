@@ -1,6 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Activity = require("../models/Activity");
 const User = require("../models/User")
+const Comment = require("../models/Comment")
 // const Favorite = require("../models/Favorite");
 
 module.exports = {
@@ -48,7 +49,8 @@ module.exports = {
       //http://localhost:2121/post/634d481f908f413d185f31a3
       //id === 634d481f908f413d185f31a3
       const activity = await Activity.findById(req.params.id);
-      res.render("suggestion.ejs", { activity: activity, user: req.user });
+      const comments = await Comment.find({activity: req.params.id}).sort({createdAt: 'asc'}).lean()
+      res.render("suggestion.ejs", { activity: activity, user: req.user, comments: comments });
     } catch (err) {
       console.log(err);
     }

@@ -9,9 +9,17 @@ const CommentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  post: {
+  activity: {
     type: mongoose.Schema.Types.ObjectId,
     ref:"Activity",
+  },
+  createdBy: {
+    type: String,
+    ref: "User"
+  },
+  createdById: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   },
   createdAt: {
     type: Date,
