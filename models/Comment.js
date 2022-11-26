@@ -11,7 +11,7 @@ const CommentSchema = new mongoose.Schema({
   },
   activity: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:"Activity",
+    ref: "Activity",
   },
   createdBy: {
     type: String,

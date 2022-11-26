@@ -60,7 +60,7 @@
         <li class="col-6 justify-content-between mt-5">
           <span><%=comment.createdBy%> says: "<%=comment.comment%>"</span>
           <%if(comment.createdById == user.id){ %>
-            <form action="/comment/deleteComment/<%activity._id%>/<%comment._id %>?_method=DELETE" method="post">
+            <form action="/comment/deleteComment/<%=activity._id%>/<%=comment._id %>?_method=DELETE" method="POST">
               <button type="submit" class="btn btn-outline-danger">Delete</button>
             </form>
           <%}%>
