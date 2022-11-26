@@ -18,6 +18,6 @@ router.post("/createSuggestion", upload.single("file"), suggestionsController.cr
 router.put("/likeSuggestion/:id", suggestionsController.likeSuggestion);
 
 //enables user to delete post. In controller uses POST model to delete post from mongodb collection
-// router.delete("/deleteRecipe/:id", recipesController.deleteRecipe);
+router.delete("/deleteSuggestion/:id", suggestionsController.deleteSuggestion);
 
 module.exports = router;

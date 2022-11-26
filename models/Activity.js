@@ -28,9 +28,6 @@ const ActivitySchema = new mongoose.Schema({
   price: {
     type: String,
   },
-  season: {
-    type: String,
-  },
   typeOfActivity: {
     type: String,
     required: true,

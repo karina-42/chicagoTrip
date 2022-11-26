@@ -66,7 +66,6 @@ module.exports = {
         likes: 0,
         dislikes: 0,
         price: req.body.price,
-        season: req.body.season,
         typeOfActivity: req.body.typeOfActivity,
         user: req.user.id,
         suggestedBy: suggestionUser.userName,
@@ -104,18 +103,13 @@ module.exports = {
       console.log(err);
     }
   },
-  // deleteRecipe: async (req, res) => {
-  //   try {
-  //     // Find post by id
-  //     let recipe = await Recipe.findById({ _id: req.params.id });
-  //     // Delete image from cloudinary
-  //     await cloudinary.uploader.destroy(recipe.cloudinaryId);
-  //     // Delete post from db
-  //     await Recipe.remove({ _id: req.params.id });
-  //     console.log("Deleted Recipe");
-  //     res.redirect("/profile");
-  //   } catch (err) {
-  //     res.redirect("/profile");
-  //   }
-  // },
+  deleteSuggestion: async (req, res) => {
+    try {
+      await Activity.findByIdAndDelete({ _id: req.params.id });
+      console.log("Deleted Recipe");
+      res.redirect("/profile");
+    } catch (err) {
+      res.redirect("/profile");
+    }
+  },
 };

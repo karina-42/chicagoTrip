@@ -28,7 +28,7 @@
         <h3 class="col-3">Likes: <%= activity.likes %></h3>
         <%if(activity.user == user.id){ %>
         <form
-          action="/suggestion/deleteActivity/<%= activity.id %>?_method=DELETE"
+          action="/suggestions/deleteSuggestion/<%= activity.id %>?_method=DELETE"
           method="POST"
           class="col-3"
         >
@@ -41,7 +41,6 @@
       <p><a href="<%= activity.link %>" target="_blank">Link to page</a></p>
       <p>Description: <%= activity.description %></p>
       <p>Price: <%= activity.price %></p>
-      <p>Season: <%= activity.season %></p>
       <p>Type: <%= activity.typeOfActivity %></p>
       <p>Suggested by: <%= activity.suggestedBy %></p>
     </div>
